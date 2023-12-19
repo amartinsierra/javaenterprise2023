@@ -21,6 +21,7 @@ public class BuscadorServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body><center>");
+		System.out.println(resultados.size());
 		for(Resultado r:resultados) {
 			out.println("<h2><a href='"+r.getUrl()+"'>"+r.getUrl()+"</a></h2>");
 			out.println("<h4>"+r.getDescripcion()+"</h4><hr>");
