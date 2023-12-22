@@ -9,7 +9,7 @@ import service.ProductosService;
 
 import java.io.IOException;
 
-
+@WebServlet("/EliminarProductoServlet")
 public class EliminarProductoServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
