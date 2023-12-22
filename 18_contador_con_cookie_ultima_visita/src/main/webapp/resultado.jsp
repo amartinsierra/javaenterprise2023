@@ -8,6 +8,7 @@
 </head>
 <body>
 	<center>
+	<%-- --%>
 		<%String fecha="Primera visita";
 		Cookie[] cookies=request.getCookies();
 		if(cookies!=null){
