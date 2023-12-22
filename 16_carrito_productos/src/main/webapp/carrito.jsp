@@ -7,11 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="CerrarSesionServlet">Cerrar sesión</a>
 	<center>
 		<%List<Producto> carrito=(List<Producto>)session.getAttribute("carrito");
 		if(carrito!=null){%>
 		
 			<table border="1">
+			
 				<tr><th>Nombre</th><th>Precio</th><th>Categoria</th><th></th></tr>
 				<%for(Producto pr:carrito){%>
 					<tr>
