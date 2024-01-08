@@ -8,7 +8,7 @@
 </head>
 <body>
 	<center>
-		<h1>Cursos cuyo precio máximo es <%=request.getParameter("precio") %></h1>
+		<h1>Cursos cuyo precio máximo es ${param.precio}</h1>
 		<br>
 		<table border="1">
 			<tr>

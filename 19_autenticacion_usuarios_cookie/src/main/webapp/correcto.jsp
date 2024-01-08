@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>El usuario <%=request.getParameter("usuario") %> es válido</h1>
+	<h1>El usuario ${param.usuario} es válido</h1>
 </body>
 </html>

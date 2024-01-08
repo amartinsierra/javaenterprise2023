@@ -39,7 +39,7 @@ public class ContadorServlet extends HttpServlet {
 		generarCookie(response);
 		
 		//transferir petición a JSP
-		request.getRequestDispatcher("resultado.jsp").forward(request, response);
+		request.getRequestDispatcher("resultado_el.jsp").forward(request, response);
 	}
 	//crea una cookie con la fecha y hora actuales y se la envía al cliente
 	private void generarCookie(HttpServletResponse response) {
