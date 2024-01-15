@@ -1,27 +1,26 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import model.Usuario;
 
 public class UsuariosService {
-	List<Usuario> usuarios=new ArrayList<>(List.of(
-			new Usuario("user1","pwd1"),
-			new Usuario("user2","pwd2"),
-			new Usuario("user3","pwd3"),
-			new Usuario("user4","pwd4")
-			));
+	private EntityManager getEntityManager() {
+		EntityManagerFactory factory=Persistence.createEntityManagerFactory("cursosPU");
+		return factory.createEntityManager();
+	}
 	
 	public boolean autenticar(String usuario, String pwd) {
-		for(Usuario u:usuarios) {
-			if(u.getUsuario().equals(usuario)&&u.getPassword().equals(pwd)) {
-				return true;
-			}
-		}
-		return false;
-		
-		/*return usuarios.stream()
-				.anyMatch(u->u.getUsuario().equals(usuario)&&u.getPassword().equals(pwd));*/
+		String jpql="select u from Usuario u where u.usuario=?1 and u.password=?2";
+		TypedQuery<Usuario> query=getEntityManager().createQuery(jpql,Usuario.class);
+		query.setParameter(1, usuario);
+		query.setParameter(2, pwd);
+		/*if(query.getResultList().size()==0) {
+			
+		}*/
+		return query.getResultList().size()>0;
+		//return query.getSingleResult()!=null;
 	}
 }
