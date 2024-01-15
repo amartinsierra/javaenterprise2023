@@ -35,6 +35,10 @@ public class FrontController extends HttpServlet {
 				urlView=(Boolean)request.getAttribute("autenticado")?"menu.html":"error.jsp";
 				
 				break;
+			case "doModificar":
+				request.getRequestDispatcher("ModificarController").include(request, response);
+				urlView="menu.html";
+				break;
 			case "toNuevo":
 				urlView="nuevo.html";
 				break;
@@ -49,6 +53,9 @@ public class FrontController extends HttpServlet {
 				break;
 			case "toLogin":
 				urlView="login.html";
+				break;
+			case "toModificar":
+				urlView="modificar.html";
 				break;
 		}
 		request.getRequestDispatcher(urlView).forward(request, response);
