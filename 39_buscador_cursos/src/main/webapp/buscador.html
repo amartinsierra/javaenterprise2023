@@ -93,13 +93,13 @@
 		$("#rbPrecio").click(function(){
 			$("#duracion").hide();
 			$("#precio").show();
-			
+			$("#tablaDatos").hide();
 		});
 		
 		$("#rbDuracion").click(function(){
 			$("#precio").hide();
 			$("#duracion").show();
-
+			$("#tablaDatos").hide();
 			
 		});
 		
@@ -116,6 +116,7 @@
 		});
 		
 		function gestionarPeticion(url,params){
+			$("#tablaDatos").show();
 			$.get(url,params,function(data){
 				var tabla="<table border='1'><tr><th>Nombre</th><th>Duración</th><th>Precio</th></tr>";
 				$.each(data,function(i,p){
