@@ -14,11 +14,18 @@ public class FrontController extends HttpServlet {
 		String operation=request.getParameter("operation");
 		String urlView="";
 		switch(operation) {
-		case "doTemas":
-			request.getRequestDispatcher("TemasController").include(request, response);
-			urlView="visor.jsp";
-			break;
+			case "doTemas":
+				request.getRequestDispatcher("TemasController").include(request, response);
+				urlView="visor.jsp";
+				break;
+			case "doLibros":
+				request.getRequestDispatcher("LibrosController").forward(request, response);
+				return; //en peticiones AJAX la respuesta la lleva a cabo
+						//el servlet controlador
 		}
+		
+			
+			
 		request.getRequestDispatcher(urlView).forward(request, response);
 	}
 

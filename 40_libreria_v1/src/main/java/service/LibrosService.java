@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import model.Libro;
 import model.Tema;
 
 public class LibrosService {
@@ -18,5 +19,19 @@ public class LibrosService {
 		String jpql="select t from Tema t";
 		TypedQuery<Tema> query=getEntityManager().createQuery(jpql,Tema.class);
 		return query.getResultList();
+	}
+	
+	public List<Libro> librosTema(int idTema){
+		String jpql="select l from Libro l";
+		TypedQuery<Libro> query;
+		if(idTema!=0) {
+			jpql+=" where l.idTema=?1";
+			query=getEntityManager().createQuery(jpql,Libro.class);
+			query.setParameter(1, idTema);
+		}else{
+			query=getEntityManager().createQuery(jpql,Libro.class);
+		}
+		return query.getResultList();
+		
 	}
 }
