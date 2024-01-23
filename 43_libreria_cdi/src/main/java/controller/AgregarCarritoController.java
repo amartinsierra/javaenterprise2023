@@ -8,6 +8,8 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import dtos.LibroDto;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,11 +20,13 @@ import service.LibrosService;
 
 @WebServlet("/AgregarCarritoController")
 public class AgregarCarritoController extends HttpServlet {
-	
+	@Inject
+	@Named(value="impl1")
+	LibrosService service;
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int isbn=Integer.parseInt(request.getParameter("isbn"));
 		HttpSession sesion=request.getSession();
-		LibrosService service=new LibrosService();
+		
 		//recogemos el libro cuyo ISBN se recibe como parámetro
 		LibroDto libro=service.getLibro(isbn);
 		List<LibroDto> carrito=new ArrayList<>();
